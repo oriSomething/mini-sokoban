@@ -1,0 +1,51 @@
+<body onload='
+/*
+  37 - left
+  38 - up
+  39 - right
+  40 - down
+
+  " " - floor
+  "#" - wall
+  "." - goal
+  "@" - sokoban
+  "$" - package
+  "+" - sokoban + goal
+  "*" - package + goal
+*/
+
+K = onkeydown = ({ keyCode: k }) => {
+  if (k > 36 && k < 41) {
+    ox = (k -= 38)==2?0:k;
+    oy = k==-1?0:k-1;
+
+    A = M[y][x];
+    B = M[y + oy][x + ox] || "#";
+    C = (Y=M[y + oy * 2]||[])[x + ox * 2];
+    a = A == "+" ? "." : " ";
+    b = " "==B||B=="$" ? "@" : "+";
+    c = " "==B||B=="." ? C : C == " " ? "$" : C == "." ? "*" : C;
+
+    if (B != "#" && (!"#*$".includes(C) || " .".includes(B))) {
+      M[y][x] = a;
+      M[y + oy][x + ox] = b;
+      Y[x + ox * 2] = c;
+      y += oy;
+      x += ox;
+    }
+  }
+
+  P.textContent = M.join("\n");
+};
+
+M = P.textContent.split("\n").map(l => l.split(""));
+x = 3;
+y = 2;
+
+K(P);
+'><pre id=P style="font-size:3pc">#####
+#   #
+#.$@#
+#.$ #
+#.$ #
+#####
