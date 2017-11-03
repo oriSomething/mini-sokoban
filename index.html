@@ -1,5 +1,4 @@
-<body onload='
-K=onkeydown=d=>{d=d.keyCode;36<d&&41>d&&(ox=2==(d-=38)?0:d,oy=-1==d?0:d-1,A=M[y][x],B=M[y+oy][x+ox]||"#",C=(Y=M[y+2*oy]||[])[x+2*ox],a="+"==A?".":" ",b=" "==B||"$"==B?"@":"+",c=" "==B||"."==B?C:" "==C?"$":"."==C?"*":C,"#"==B||"#*$".includes(C)&&!" .".includes(B)||(M[y][x]=a,M[y+oy][x+ox]=b,Y[x+2*ox]=c,y+=oy,x+=ox));P.textContent=M.join("\n")};M=P.textContent.split("\n").map(l=>l.split(""));x=3;y=2;K(P)'><pre id=P style="font-size:3pc">#####
+<body onload='I="includes";J="textContent";K=onkeydown=d=>{d=d.keyCode;36<d&&41>d&&(L=2==(d-=38)?0:d,d=-1==d?0:d-1,Q=x+L,W=y+d,E=Q+L,A=M[y][x],B=M[W][Q]||"#",C=(Y=M[W+d]||[])[E],a="+"==A?".":" ",b=" "==B||"$"==B?"@":"+",c=" "==B||"."==B?C:" "==C?"$":"."==C?"*":C,"#"==B||"#*$"[I](C)&&!" ."[I](B)||(M[y][x]=a,M[W][Q]=b,Y[E]=c,y=W,x=Q));P[J]=M.join("\n")};M=P[J].split("\n").map(l=>l.split(""));x=3;y=2;K(P)'><pre id=P style="font-size:3pc">#####
 #   #
 #.$@#
 #.$ #

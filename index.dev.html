@@ -13,32 +13,39 @@
   "+" - sokoban + goal
   "*" - package + goal
 */
+I = "includes";
+J = "textContent";
 
-K = onkeydown = ({ keyCode: k }) => {
-  if (k > 36 && k < 41) {
-    ox = (k -= 38)==2?0:k;
-    oy = k==-1?0:k-1;
+K = onkeydown = d => {
+  d = d.keyCode;
 
+  if (d > 36 && d < 41) {
+    L = (d -= 38) == 2 ? 0 : d;
+    d = d == -1 ? 0 : d - 1;
+
+    Q = x + L;
+    W = y + d;
+    E = Q + L;
     A = M[y][x];
-    B = M[y + oy][x + ox] || "#";
-    C = (Y=M[y + oy * 2]||[])[x + ox * 2];
+    B = M[W][Q] || "#";
+    C = (Y = M[W+d]||[])[E];
     a = A == "+" ? "." : " ";
-    b = " "==B||B=="$" ? "@" : "+";
-    c = " "==B||B=="." ? C : C == " " ? "$" : C == "." ? "*" : C;
+    b = " " == B || B == "$" ? "@" : "+";
+    c = " " == B || B == "." ? C : C == " " ? "$" : C == "." ? "*" : C;
 
-    if (B != "#" && (!"#*$".includes(C) || " .".includes(B))) {
+    if (B != "#" && (!"#*$"[I](C) || " ."[I](B))) {
       M[y][x] = a;
-      M[y + oy][x + ox] = b;
-      Y[x + ox * 2] = c;
-      y += oy;
-      x += ox;
+      M[W][Q] = b;
+      Y[E] = c;
+      y = W;
+      x = Q;
     }
   }
 
-  P.textContent = M.join("\n");
+  P[J] = M.join("\n");
 };
 
-M = P.textContent.split("\n").map(l => l.split(""));
+M = P[J].split("\n").map(l => l.split(""));
 x = 3;
 y = 2;
 
