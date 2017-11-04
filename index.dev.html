@@ -15,6 +15,7 @@
 */
 I = "includes";
 J = "textContent";
+N = "indexOf";
 
 K = onkeydown = d => {
   d = d.keyCode;
@@ -46,8 +47,8 @@ K = onkeydown = d => {
 };
 
 M = P[J].split("\n").map(l => l.split(""));
-x = 3;
-y = 2;
+y = P[J][N]("@") / (P[J][N]("\n") + 1) | 0;
+x = M[y][N]("@");
 
 K(P);
 '><pre id=P style="font-size:3pc">#####
